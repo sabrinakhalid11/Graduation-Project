@@ -1,1 +1,2 @@
-Will upload all data when I finish the Grad
+This is a sub project to my graduation project
+''' Smart Shelf '''
