@@ -20,7 +20,9 @@ firebase = pyrebase.initialize_app(config)
 database = firebase.database()
 
 #Declare Blynk token
-BLYNK_AUTH_TOKEN = "yu9LfsKQ5yZnwQjGqCK0OXrOXsX8Hn-i"
+BLYNK_TEMPLATE_ID = "TMPL2YTgY2665"
+BLYNK_TEMPLATE_NAME = "Quickstart Template"
+BLYNK_AUTH_TOKEN = "ac6fXQM_y2JmlJrhUxOZsu1TJiRDu6Ur"
 
 #Declare last time read for sesnors
 #lastRead = 0
@@ -35,7 +37,7 @@ def WriteBase(data):
         This function push the values of sensors and the system state to firebase
         to make the system send a message in case of any abnormality
     """
-    database.child("EHAB").child(data[0]).set(data[1])
+    database.child("Monitor").child(data[0]).set(data[1])
     database.child("Store").child(data[0]).push(data[1])
 
 def ReadBase(data):
@@ -82,7 +84,6 @@ try:
 	    time.sleep(1)
 except KeyboardInterrupt:
 	print('program end')
-'''
-if __name__ == "__main__":
+
+if _name_ == "_main_":
    	WriteBase(['gas',mq5_digital_output])
-'''
