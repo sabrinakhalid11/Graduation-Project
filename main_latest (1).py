@@ -11,15 +11,14 @@ from Adafruit_IO import Client, Feed, RequestError
 import requests
 import threading
 import pyrebase
-# import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 
 
 config = {     
-  "apiKey": "AIzaSyAc5CIZFiVapWG7b35DRgAJTyIJNwiExzw",
-  "authDomain": "iot-greenhouse-9343a.firebaseapp.com",
-  "databaseURL": "https://iot-greenhouse-9343a-default-rtdb.firebaseio.com",
-  "storageBucket": "iot-greenhouse-9343a.appspot.com"
+  "apiKey": "AIzaSyBD_tIuFSnDGcCCwv0iDqw7B-Fo-yt_o_U",
+  "authDomain": "upgrow-b9789.firebaseapp.com",
+  "databaseURL": "https://upgrow-b9789-default-rtdb.firebaseio.com",
+  "storageBucket": "upgrow-b9789.appspot.com"
 }
 
 
@@ -36,7 +35,7 @@ database = firebase.database()
 
 
 # Set to the Adafruit IO key.
-ADAFRUIT_IO_KEY = 'aio_cfkp16ctP5tGmpp6IxQr1HZvC86C'
+# ADAFRUIT_IO_KEY = 'aio_cfkp16ctP5tGmpp6IxQr1HZvC86C'
 
 # Set to the Adafruit IO username.
 ADAFRUIT_IO_USERNAME = 'ehelsayed'
@@ -113,7 +112,10 @@ gasv = 0
 moisturev = 0
 
 #Declare Blynk token
-BLYNK_AUTH_TOKEN = "yu9LfsKQ5yZnwQjGqCK0OXrOXsX8Hn-i"
+#Declare Blynk token
+BLYNK_TEMPLATE_ID = "TMPL2YTgY2665"
+BLYNK_TEMPLATE_NAME = "Quickstart Template"
+BLYNK_AUTH_TOKEN = "_hI1wtLUhYmyiAKrvv8kb7yNiXc_p_NR"
 
 #Declare last time read for sesnors
 lastRead = 0
@@ -162,11 +164,6 @@ def init():
         This function initial the pins and the objects needed
         inside the project
     '''
-    #set gas sesnor and moisture sensor to input
-    #GPIO.setup(gas,GPIO.IN,pull_up_down = GPIO.PUD_DOWN)
-    #GPIO.setup(moist,GPIO.IN,pull_up_down = GPIO.PUD_DOWN)
-
-
     #set Fan relay and lamp relay to output
     GPIO.setup(fanIO,GPIO.OUT,initial = GPIO.LOW)
     GPIO.setup(pumpIO,GPIO.OUT,initial = GPIO.LOW)
@@ -185,10 +182,6 @@ def readDHT(dhtIO):
         print("Sensor Failure");
         humidityv = temperaturev = 0
         #return 0,0
-
-    #Sending the reading to Adafruit
-    #aio.send(humidity.key, humidityv)
-    #aio.send(temperature.key, temperaturev)
 
     #Sending the reading to FireBase
     WriteBase(['humidity',humidityv])
@@ -243,12 +236,8 @@ def readGas(gasIO):
         
     #Send the reading to Adafruit, Firebase, and Blynk
     WriteBase(['gas',gasv])
-    #aio.send(gas.key, gasv) 
     write(BLYNK_AUTH_TOKEN, 'v3',gass)
     write(BLYNK_AUTH_TOKEN, 'v7',str(gasv))
-    #print("Gas (in PPM) =",gasv)
-    #return gasv
-
 
 def readMoist(moistIO):
     '''
@@ -261,21 +250,16 @@ def readMoist(moistIO):
     moisturev = 100 - moisturev*100/1024
     print("Moisture level:"+str("%.1f"%(moisturev))+"%\n")
     if(moisturev < 20):
-        #moisturev = 1
         moistures = "Dry Soil"
         WriteBase(['moistrisk',1])
     else:
-        #moisturev = 0
         moistures = "Hydrated Soil"
         WriteBase(['moistrisk',0])
         
     #Send the reading to Adafruit, Firebase, and Blynk
     WriteBase(['moist',moisturev])
-    #aio.send(moisture.key, moisturev)
     write(BLYNK_AUTH_TOKEN, 'v4', moistures)
     write(BLYNK_AUTH_TOKEN, 'v8', str(moisturev))
-    #print("Moist (%) = ", moisturev)
-    #return moisturev
 
 
 def Threading():
@@ -337,13 +321,10 @@ if __name__ == "__main__":
                 #Apply the condition to control fan
                 #(humidityv > 60 or temperaturev >30 or gas read a problem)
                 fan(True if humidityv > 60 or temperaturev >30 or gasv >= 160 else False )
-
                 #give the pump function reads of moisture sensor to control it
                 pump(moisturev<20)
 
-            #otherwise (manual), control the system based on the switches from Blynk
             else:
-
                 #control fan based on fanstat value
                 fan(True if Fanstat =='1' else False)
 
