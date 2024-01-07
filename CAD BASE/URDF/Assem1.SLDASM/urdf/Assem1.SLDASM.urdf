@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Assem1.SLDASM">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.448179476770501 1.01108544051734 1.27387741080002"
+        rpy="0 0 0" />
+      <mass
+        value="10.8735823353818" />
+      <inertia
+        ixx="0.605736148428764"
+        ixy="4.26645077702127E-10"
+        ixz="2.77638500546024E-11"
+        iyy="0.287638492340419"
+        iyz="-3.40483004859627E-10"
+        izz="0.556682927799354" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="FLlink">
+    <inertial>
+      <origin
+        xyz="0.0291705646423368 -8.14921315150929E-08 -3.92430942741662E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.188668093199324" />
+      <inertia
+        ixx="9.46725242167147E-05"
+        ixy="-2.72208105405879E-11"
+        ixz="2.15387278364328E-11"
+        iyy="6.0667865849471E-05"
+        iyz="2.21289856584993E-10"
+        izz="6.06664544929904E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/FLlink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/FLlink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FLJoint"
+    type="continuous">
+    <origin
+      xyz="0.17183 -1.535 0.28967"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FLlink" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="BLlink">
+    <inertial>
+      <origin
+        xyz="0.00699999886366642 3.9962489317702E-08 8.27054728036458E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.377335515104805" />
+      <inertia
+        ixx="0.00018934425340134"
+        ixy="4.52783900770123E-11"
+        ixz="-2.3537263708423E-11"
+        iyy="0.000121333656647772"
+        iyz="1.328062560047E-09"
+        izz="0.000121334049938571" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/BLlink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/BLlink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BLJoint"
+    type="continuous">
+    <origin
+      xyz="0.74883 -1.526 0.28967"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="BLlink" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="BRlink">
+    <inertial>
+      <origin
+        xyz="-0.0244131600233083 8.16218461707763E-08 4.21946462214606E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.188667746517334" />
+      <inertia
+        ixx="9.46720928420982E-05"
+        ixy="2.69671152170288E-11"
+        ixz="-2.19385184989903E-11"
+        iyy="6.06675477533837E-05"
+        iyz="8.03642128633319E-11"
+        izz="6.06663132556774E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/BRlink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/BRlink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="BRJoint"
+    type="continuous">
+    <origin
+      xyz="0.74883 -0.96819 0.28967"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="BRlink" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="FRlink">
+    <inertial>
+      <origin
+        xyz="0.0605836969687106 -3.84086067395373E-08 -8.16450756030429E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.377335776659428" />
+      <inertia
+        ixx="0.000189344345798505"
+        ixy="-4.43476417629842E-11"
+        ixz="2.03011386279003E-11"
+        iyy="0.000121333625952411"
+        iyz="1.28265668879456E-09"
+        izz="0.000121334183885115" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/FRlink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/FRlink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FRJoint"
+    type="continuous">
+    <origin
+      xyz="0.17183 -0.96819 0.28967"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="FRlink" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Camera">
+    <inertial>
+      <origin
+        xyz="0.00111199098943748 2.78348667868134E-05 0.0125996884110157"
+        rpy="0 0 0" />
+      <mass
+        value="1.26688353536978" />
+      <inertia
+        ixx="0.000114531279249736"
+        ixy="4.05579542497447E-08"
+        ixz="-1.13413795064262E-05"
+        iyy="0.000771597084162044"
+        iyz="2.05555091754155E-07"
+        izz="0.000763733375600652" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/Camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Assem1.SLDASM/meshes/Camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CameraJoint"
+    type="fixed">
+    <origin
+      xyz="0.1503 -1.2739 1.8784"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
